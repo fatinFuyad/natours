@@ -1,0 +1,19 @@
+node_modules 
+dev-data
+
+# for ignoring saved versions
+# ignores the app-version files and folders in the root directory
+/app-v*
+
+# ignores any version files and folders
+*-v*
+
+# exclude .env files 
+*.env
+config.env
+
+cache
+.cache
+dist
+build
+bundle*

@@ -1,0 +1,36 @@
+//- Email template adapted from https://github.com/leemunroe/responsive-html-email-template
+//- Converted from HTML using https://html2pug.now.sh/
+
+doctype html
+html 
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title= subject
+  body
+    table(width='100%' cellpadding='0' cellspacing='0')
+      tr
+        td(align='center' style='padding:30px 15px;')
+          // Container
+          table(width='100%' max-width='600' cellpadding='0' cellspacing='0' style='background:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,0.08);')
+            // Header
+            tr
+              td(align='center' style='background:linear-gradient(135deg,#1faa59,#0b9444); padding:30px;')
+                h1(style='color:#ffffff; margin:0; font-size:26px;')
+                  | &#x1F33F; NATOURS
+                p(style='color:#eafff1; margin-top:8px; font-size:14px;')
+                  | Your journey starts with a secure account
+            // Body
+            block Content
+            
+            // Footer
+            tr
+              td(align='center' style='background:#f1fdf6; padding:20px;')
+                p(style='font-size:12px; color:#777; margin:0;')
+                  | ©️ 2026 NATOURS. All rights reserved.
+                p(style='font-size:12px; color:#777; margin:6px 0 0;')
+                  | Need help? Contact us at 
+                  a(href='mailto:support@natours.com' style='color:#1faa59;')
+                    | support@natours.com
+          // End Container
+ 
