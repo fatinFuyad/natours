@@ -2,12 +2,13 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 const rateLimit = require("express-rate-limit");
-// const helmet = require("helmet");
+const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 const compression = require("compression");
+const cors = require('cors')
 
 const tourRouter = require("./routes/tourRouter");
 const userRouter = require("./routes/userRouter");
@@ -20,6 +21,17 @@ const globalErrorHandler = require("./controllers/errorController");
 
 // 1) MIDDLEWARES
 const app = express();
+// Implement CORS
+app.use(cors());
+// Access-Control-Allow-Origin *
+// api.natours.com, front-end natours.com
+// app.use(cors({
+//   origin: 'https://www.natours.com'
+// }))
+
+// setup options for complex request handling
+app.options("*", cors());
+// app.options('/api/v1/tours/:id', cors());
 
 // set the view engine to pug
 app.set("view engine", "pug");
@@ -30,7 +42,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 // app.use(express.static(`${__dirname}/public`));
 
-// app.use(helmet({ contentSecurityPolicy: false }));// problem with cors policy
+ app.use(helmet( ));// problem with cors policy
 
 // console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "development") {
