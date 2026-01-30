@@ -19,8 +19,7 @@ const { protect, restrictTo } = require("../controllers/authController");
 const router = express.Router(); // router is also a middleware
 // router.param("id", checkId); // checkId is a middleware that checks if the id is valid
 
-router.use(protect);
-router.use("/:tourId/reviews", reveiwRouter); // merged two router for specified path
+router.route("/:tourId/reviews").get(protect, reveiwRouter); // merged two router for specified path
 
 router.route("/tours-stats").get(getToursStats);
 router
@@ -47,7 +46,7 @@ router
     restrictTo("admin", "lead-guide"),
     uploadTourImages,
     resizeTourImages,
-    updateTour
+    updateTour,
   )
   .delete(protect, restrictTo("admin", "lead-guide"), deleteTour);
 
